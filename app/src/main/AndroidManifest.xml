@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WalkThrough"></activity>
+        <activity android:name=".splashScreen" />
         <activity android:name=".registrationScreen" />
-        <activity android:name=".splashScreen">
+        <activity android:name=".WalkThrough">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

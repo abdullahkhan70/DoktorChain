@@ -7,4 +7,9 @@
     <color name="gradStop">#E04D43</color>
     <color name="splashBackground">#64B5F6</color>
     <color name="backgroundTabLayout">#0bc9e3</color>
+    <color name="startColorOfGradient_01">#EC3810</color>
+    <color name="endingColorOfGradient_01">#B92A0A</color>
+    <color name="startColorOfGradient_02">#FFC707</color>
+    <color name="endingColorOfGradient_02">#DEB732</color>
+
 </resources>
