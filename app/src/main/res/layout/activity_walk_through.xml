@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
 
+
         <com.itsronald.widget.ViewPagerIndicator
             android:id="@+id/view_pager_indicator"
             android:layout_width="match_parent"

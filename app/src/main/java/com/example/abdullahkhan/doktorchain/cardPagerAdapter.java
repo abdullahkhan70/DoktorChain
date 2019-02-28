@@ -1,12 +1,14 @@
 package com.example.abdullahkhan.doktorchain;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -88,6 +90,14 @@ public class cardPagerAdapter extends PagerAdapter implements cardAdapter {
         Glide.with(c).load(item.getInner_images()).centerCrop().into(slide_image);
         slide_content.setText(item.getInner_content());
         slide_description.setText(item.getInner_description());
+        Button btn = view.findViewById(R.id.nextSlide);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(c,user_profile_navigation_bar.class);
+                c.startActivity(intent);
+            }
+        });
 
     }
 }

@@ -8,10 +8,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".splashScreen" />
-        <activity android:name=".registrationScreen" />
-        <activity android:name=".WalkThrough">
+        android:theme="@style/AppTheme"
+        android:layoutDirection="rtl">
+
+
+        <activity
+            android:name=".user_profile_navigation_bar"
+            android:label="@string/title_activity_user_profile_navigation_bar"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+
+        <activity android:name=".splashScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".registrationScreen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WalkThrough"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -19,11 +32,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".registerscreen"
             android:label="@string/title_activity_registration_screen"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
