@@ -117,7 +117,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/border_full_user_doctor_btn"
                 android:onClick="user_profile_view_profile"
                 android:text="View Profile"

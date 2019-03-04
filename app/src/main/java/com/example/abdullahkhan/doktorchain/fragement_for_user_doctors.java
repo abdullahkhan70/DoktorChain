@@ -85,9 +85,6 @@ public class fragement_for_user_doctors extends Fragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
 
-
-
-
         ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(c,android.R.layout.simple_list_item_1,cities);
         SearchableSpinner searchableCities = view.findViewById(R.id.user_doctor_cities);
         searchableCities.setTitle("Select Cities");
