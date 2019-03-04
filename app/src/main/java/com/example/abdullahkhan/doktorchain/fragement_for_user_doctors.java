@@ -94,6 +94,8 @@ public class fragement_for_user_doctors extends Fragment {
         searchableCities.setPositiveButton("OK");
         searchableCities.setAdapter(citiesAdapter);
 
+        view.isInEditMode();
+
         cardView = view.findViewById(R.id.cardView3);
 
         SearchableSpinner searchabelSpecialization = view.findViewById(R.id.user_doctor_specialization);
