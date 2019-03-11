@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/user_profile_toolbar"
-        android:background="@color/gradStop"
-        tools:ignore="MissingConstraints" />
+
 
     <FrameLayout
         android:id="@+id/fragment_switch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/user_profile_toolbar"
+        android:background="@android:color/white"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

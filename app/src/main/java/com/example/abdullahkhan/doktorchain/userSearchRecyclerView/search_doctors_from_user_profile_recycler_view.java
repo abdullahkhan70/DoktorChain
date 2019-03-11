@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.userSearchRecyclerView;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,19 +11,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_doctor_for_user_getter_setter;
 
-import org.w3c.dom.Text;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class search_doctors_from_user_profile_recycler_view extends RecyclerView.Adapter<search_doctors_from_user_profile_recycler_view.myViewHolder>{
-    LayoutInflater layoutInflater;
-    Context c;
+public class search_doctors_from_user_profile_recycler_view extends RecyclerView.Adapter<search_doctors_from_user_profile_recycler_view.myViewHolder>
+{
 
-    List<search_doctor_for_user_getter_setter> list_of_doctor_profiles;
+    private LayoutInflater layoutInflater;
+    private Context c;
+    private List<search_doctor_for_user_getter_setter> list_of_doctor_profiles;
+    private List<search_doctor_for_user_getter_setter> searchItems;
+
+
     public search_doctors_from_user_profile_recycler_view(List<search_doctor_for_user_getter_setter> list_of_doctor_profiles,Context c){
         this.list_of_doctor_profiles = list_of_doctor_profiles;
         this.c = c;
+        searchItems = new ArrayList<>(list_of_doctor_profiles);
     }
 
 
@@ -63,6 +69,13 @@ public class search_doctors_from_user_profile_recycler_view extends RecyclerView
         return list_of_doctor_profiles.size();
     }
 
+
+    public void filteredListing(ArrayList<search_doctor_for_user_getter_setter> filteredList) {
+
+        list_of_doctor_profiles = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class myViewHolder extends RecyclerView.ViewHolder{
 
 
@@ -72,14 +85,20 @@ public class search_doctors_from_user_profile_recycler_view extends RecyclerView
 
         public myViewHolder(View itemView) {
             super(itemView);
-            user_profile_doctor = itemView.findViewById(R.id.user_profile_doctor);
+            user_profile_doctor = itemView.findViewById(R.id.user_doctor_name);
             doctor_name = itemView.findViewById(R.id.doctor_name);
-            doctor_occupation = itemView.findViewById(R.id.doctor_occupation);
+            doctor_occupation = itemView.findViewById(R.id.doctor_specialist);
             facebook_user_doctor_social_media = itemView.findViewById(R.id.facebook_user_doctor_social_media);
             twitter_user_doctor_social_media = itemView.findViewById(R.id.twitter_user_doctor_social_media);
             linkedin_user_doctor_social_media = itemView.findViewById(R.id.linkedin_user_doctor_social_media);
             user_profile_view_profile = itemView.findViewById(R.id.user_profile_view_profile);
 
         }
+
+//        public void updateList(List<String> searchItem){
+//            searchItems = new ArrayList<>();
+//            searchItems.addAll(searchItem);
+//            notifyDataSetChanged();
+//        }
     }
 }

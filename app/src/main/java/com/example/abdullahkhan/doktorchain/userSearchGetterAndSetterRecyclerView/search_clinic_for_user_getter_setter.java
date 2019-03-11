@@ -1,13 +1,12 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView;
 
-public class search_doctor_for_user_getter_setter {
-
+public class search_clinic_for_user_getter_setter {
     private int doctor_profile_image;
     private String doctor_profile_name;
     private String doctor_profile_destination;
     private int facebook_profile,twitter_profile,linkedin_profile;
 
-    public search_doctor_for_user_getter_setter(int doctor_profile_image, String doctor_profile_name, String doctor_profile_destination, int facebook_profile, int twitter_profile, int linkedin_profile) {
+    public search_clinic_for_user_getter_setter(int doctor_profile_image, String doctor_profile_name, String doctor_profile_destination, int facebook_profile, int twitter_profile, int linkedin_profile) {
         this.doctor_profile_image = doctor_profile_image;
         this.doctor_profile_name = doctor_profile_name;
         this.doctor_profile_destination = doctor_profile_destination;

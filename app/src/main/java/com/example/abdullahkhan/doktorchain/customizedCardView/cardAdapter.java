@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.customizedCardView;
 
 import android.support.v7.widget.CardView;
 

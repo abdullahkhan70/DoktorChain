@@ -3,6 +3,7 @@ package com.example.abdullahkhan.doktorchain;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -37,10 +38,10 @@ public class registrationScreen extends AppCompatActivity {
         setupViewPager(mViewPager);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setTabTextColors(getResources().getColor(android.R.color.black),
-                getResources().getColor(R.color.splashBackground));
-        tabLayout.setBackgroundColor(getResources().getColor(android.R.color.white));
-        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.backgroundTabLayout));
+        tabLayout.setTabTextColors(ContextCompat.getColor(this,android.R.color.black),
+                ContextCompat.getColor(this,R.color.splashBackground));
+        tabLayout.setBackgroundColor(ContextCompat.getColor(this,android.R.color.white));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this,R.color.backgroundTabLayout));
 
         tabLayout.setupWithViewPager(mViewPager);
 

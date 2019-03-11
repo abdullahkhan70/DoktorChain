@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.customizedCardView;
 
 public class cardItemString {
 

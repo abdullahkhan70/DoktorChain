@@ -1,22 +1,25 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.userFragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_hopital_from_user_profile_recycler_view;
+import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_hospital_getter_and_setter;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.util.ArrayList;
@@ -24,12 +27,15 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 
-public class fragement_for_user_doctors extends Fragment {
-    List<search_doctor_for_user_getter_setter> list_of_doctor_profile = new ArrayList<>();
-    search_doctors_from_user_profile_recycler_view mAdapter;
+public class fragement_for_user_hospital extends Fragment {
+
+    List<search_hospital_getter_and_setter> list_of_doctor_profile = new ArrayList<>();
+    search_hopital_from_user_profile_recycler_view mAdapter;
     RecyclerView recyclerView;
     Context c;
-
+    // search_doctor_for_user_getter_setter hyper_doctors;
+    Toolbar toolbar;
+    EditText searchView_hospital_name;
 
     Spinner spinner;
     CardView cardView;
@@ -65,18 +71,26 @@ public class fragement_for_user_doctors extends Fragment {
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
-    public fragement_for_user_doctors(){}
+    public fragement_for_user_hospital(){}
 
 
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater , ViewGroup parent, Bundle savedInstanceState) {
+    public View onCreateView(@androidx.annotation.NonNull LayoutInflater inflater , ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         c = parent.getContext();
-
-        return inflater.inflate(R.layout.frament_for_user_doctors, parent,false);
+        //hyper_doctors = new ArrayList<>();
+        return inflater.inflate(R.layout.fragment_for_user_hospital, parent,false);
 
     }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+
 
     // This event is triggered soon after onCreateView().
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
@@ -85,8 +99,33 @@ public class fragement_for_user_doctors extends Fragment {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
 
+//        toolbar = (Toolbar) getView().findViewById(R.id.user_profile_toolbar);
+//        AppCompatActivity activity = (AppCompatActivity) getActivity();
+//        activity.setSupportActionBar(toolbar);
+
+        searchView_hospital_name = view.findViewById(R.id.search_hospital_name);
+
+        searchView_hospital_name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filtered(s.toString());
+            }
+
+
+        });
+
         ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(c,android.R.layout.simple_list_item_1,cities);
-        SearchableSpinner searchableCities = view.findViewById(R.id.user_doctor_cities);
+        SearchableSpinner searchableCities = view.findViewById(R.id.user_hospital_cities);
         searchableCities.setTitle("Select Cities");
         searchableCities.setPositiveButton("OK");
         searchableCities.setAdapter(citiesAdapter);
@@ -95,7 +134,7 @@ public class fragement_for_user_doctors extends Fragment {
 
         cardView = view.findViewById(R.id.cardView3);
 
-        SearchableSpinner searchabelSpecialization = view.findViewById(R.id.user_doctor_specialization);
+        SearchableSpinner searchabelSpecialization = view.findViewById(R.id.user_hospital_specialization);
 
         ArrayAdapter<String> specializationAdapter = new ArrayAdapter<>(c,android.R.layout.simple_list_item_1,specialization);
 
@@ -103,42 +142,44 @@ public class fragement_for_user_doctors extends Fragment {
         searchabelSpecialization.setPositiveButton("OK");
         searchabelSpecialization.setAdapter(specializationAdapter);
 
-        SearchableSpinner searchabelRangeFee = view.findViewById(R.id.user_doctor_range_fee);
 
-        ArrayAdapter<String> rangeFeeAdapter = new ArrayAdapter<>(c,android.R.layout.simple_list_item_1,rangeFee);
 
-        searchabelRangeFee.setTitle("Select Range Fee");
-        searchabelRangeFee.setPositiveButton("OK");
-        searchabelRangeFee.setAdapter(rangeFeeAdapter);
+        mAdapter = new search_hopital_from_user_profile_recycler_view(list_of_doctor_profile,c);
 
-        mAdapter = new search_doctors_from_user_profile_recycler_view(list_of_doctor_profile,c);
-
-        recyclerView = view.findViewById(R.id.doctor_recycler_view);
+        recyclerView = view.findViewById(R.id.hospital_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+
+
 
         prepare_doctors_profile_list();
 
 
     }
 
+    private void filtered(String toString) {
+        ArrayList<search_hospital_getter_and_setter> filteredList = new ArrayList<>();
+
+        for(search_hospital_getter_and_setter itemsFiltered : list_of_doctor_profile){
+            if(itemsFiltered.getDoctor_profile_name().toLowerCase().contains(toString.toLowerCase())){
+                filteredList.add(itemsFiltered);
+            }
+        }
+        mAdapter.filteredListing(filteredList);
+
+    }
+
     private void prepare_doctors_profile_list() {
 
-        search_doctor_for_user_getter_setter hyper_doctors = new search_doctor_for_user_getter_setter(R.drawable.doctor_background_for_registration,"Abdullah Khan","Android Developer",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon);
-        list_of_doctor_profile.add(hyper_doctors);
 
-        search_doctor_for_user_getter_setter hyper_doctor2 = new search_doctor_for_user_getter_setter(R.drawable.doctor_background_for_registration,"Mehran","Web Devloper",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon);
-        list_of_doctor_profile.add(hyper_doctor2);
 
-    }
+        list_of_doctor_profile.add(new search_hospital_getter_and_setter(R.drawable.hospital_shiffa,"Kulsom Intl","123213.com",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        menu.clear();
-        inflater.inflate(R.menu.toolbar_search_bar,menu);
+        list_of_doctor_profile.add(new search_hospital_getter_and_setter(R.drawable.hospital_shiffa,"Hospital Of Life","hello World",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
 
     }
+
 }

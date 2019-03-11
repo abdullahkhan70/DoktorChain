@@ -17,12 +17,12 @@ import android.widget.Spinner;
 public class fragmentForRegisterAsUser extends Fragment {
 
     Spinner userCity,userBloodGroup;
-
+    Context c;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        c = container.getContext();
         View view = inflater.inflate(R.layout.fragment_fragment_for_register_as_user, container, false);
         String[] cities = {"Select City",
                             "Abbottabad",
@@ -51,6 +51,8 @@ public class fragmentForRegisterAsUser extends Fragment {
        userRegisterButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               Intent intent = new Intent(c,user_profile_navigation_bar.class);
+               startActivity(intent);
 
            }
        });

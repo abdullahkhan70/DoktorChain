@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 
+import com.example.abdullahkhan.doktorchain.customizedCardView.cardItemString;
+import com.example.abdullahkhan.doktorchain.customizedCardView.cardPagerAdapter;
 import com.itsronald.widget.ViewPagerIndicator;
 import com.wajahatkarim3.easyflipviewpager.CardFlipPageTransformer;
 

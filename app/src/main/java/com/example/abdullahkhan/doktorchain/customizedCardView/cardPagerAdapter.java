@@ -1,4 +1,4 @@
-package com.example.abdullahkhan.doktorchain;
+package com.example.abdullahkhan.doktorchain.customizedCardView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-
-import org.w3c.dom.Text;
+import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.user_profile_navigation_bar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class cardPagerAdapter extends PagerAdapter implements cardAdapter {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(c,user_profile_navigation_bar.class);
+                Intent intent = new Intent(c, user_profile_navigation_bar.class);
                 c.startActivity(intent);
             }
         });
