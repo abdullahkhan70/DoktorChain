@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.modelClass.ReadDoctor;
+import com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces.RetrofitClient;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_doctor_for_user_getter_setter;
 import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_doctors_from_user_profile_recycler_view;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
@@ -26,9 +29,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresPermission;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class fragement_for_user_doctors extends Fragment  {
     List<search_doctor_for_user_getter_setter> list_of_doctor_profile = new ArrayList<>();
+    List<ReadDoctor> readDoctors = new ArrayList<>();
     search_doctors_from_user_profile_recycler_view mAdapter;
     RecyclerView recyclerView;
     Context c;
@@ -149,7 +157,7 @@ public class fragement_for_user_doctors extends Fragment  {
         searchabelRangeFee.setPositiveButton("OK");
         searchabelRangeFee.setAdapter(rangeFeeAdapter);
 
-        mAdapter = new search_doctors_from_user_profile_recycler_view(list_of_doctor_profile,c);
+        mAdapter = new search_doctors_from_user_profile_recycler_view(readDoctors,c);
 
         recyclerView = view.findViewById(R.id.doctor_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c,LinearLayoutManager.HORIZONTAL,false);
@@ -161,15 +169,41 @@ public class fragement_for_user_doctors extends Fragment  {
 
 
         prepare_doctors_profile_list();
-
+        setRetrofir(this);
 
     }
 
-    private void filtered(String toString) {
-        ArrayList<search_doctor_for_user_getter_setter> filteredList = new ArrayList<>();
+    private void setRetrofir(fragement_for_user_doctors fragement_for_user_doctors) {
 
-        for(search_doctor_for_user_getter_setter itemsFiltered : list_of_doctor_profile){
-            if(itemsFiltered.getDoctor_profile_name().toLowerCase().contains(toString.toLowerCase())){
+        RetrofitClient.getInstance().getDataFromDatabase().readDoctors().enqueue(new Callback<List<ReadDoctor>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ReadDoctor>> call,@NonNull Response<List<ReadDoctor>> response) {
+                if(response.isSuccessful()){
+                    List<ReadDoctor> readDoctor = (List<ReadDoctor>) response.body();
+
+                    Log.i("The Doctor Check: ",response.message());
+
+                    readDoctors.addAll(readDoctor);
+
+                    mAdapter.notifyDataSetChanged();
+
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ReadDoctor>> call,@NonNull Throwable t) {
+
+            }
+        });
+    }
+
+    private void filtered(String toString) {
+        ArrayList<ReadDoctor> filteredList = new ArrayList<>();
+
+        for(ReadDoctor itemsFiltered : readDoctors){
+            if(itemsFiltered.getDoctorName().toLowerCase().contains(toString.toLowerCase())){
                 filteredList.add(itemsFiltered);
             }
         }

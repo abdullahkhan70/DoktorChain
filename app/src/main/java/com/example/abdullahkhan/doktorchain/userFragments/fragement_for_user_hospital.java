@@ -79,8 +79,11 @@ public class fragement_for_user_hospital extends Fragment {
     public View onCreateView(@androidx.annotation.NonNull LayoutInflater inflater , ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         c = parent.getContext();
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_for_user_hospital,parent,false);
         //hyper_doctors = new ArrayList<>();
-        return inflater.inflate(R.layout.fragment_for_user_hospital, parent,false);
+
+        return v;
+        //return inflater.inflate(R.layout.fragment_for_user_hospital, parent,false);
 
     }
 
@@ -145,7 +148,6 @@ public class fragement_for_user_hospital extends Fragment {
 
 
         mAdapter = new search_hopital_from_user_profile_recycler_view(list_of_doctor_profile,c);
-
         recyclerView = view.findViewById(R.id.hospital_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(mLayoutManager);

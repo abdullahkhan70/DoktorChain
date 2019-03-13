@@ -69,42 +69,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/doctor_name" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/facebook_user_doctor_social_media"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="facebook_social_media_doctor_profile"
                 android:src="@drawable/facebook_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.263"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/doctor_specialist" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/twitter_user_doctor_social_media"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="twitter_social_media_doctor_profile"
                 android:src="@drawable/twitter_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.02"
                 app:layout_constraintStart_toEndOf="@+id/facebook_user_doctor_social_media"
                 app:layout_constraintTop_toBottomOf="@+id/doctor_specialist" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/linkedin_user_doctor_social_media"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="linkedin_social_media_doctor_profile"
                 android:src="@drawable/linkedin_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.077"
