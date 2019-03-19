@@ -41,7 +41,7 @@
                     app:civ_border_width="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.56"
+                    app:layout_constraintHorizontal_bias="0.617"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
@@ -57,7 +57,7 @@
                     android:textColor="@color/gradStop"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.335"
+                    app:layout_constraintHorizontal_bias="0.427"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
@@ -291,12 +291,12 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="48dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Phone No: "
+                    android:text="Fee Range "
                     android:textAllCaps="false"
                     android:textColor="@color/gradStop"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.128"
+                    app:layout_constraintHorizontal_bias="0.108"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -305,7 +305,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="56dp"
                     android:layout_marginEnd="8dp"
                     android:text="Fee-Range"
                     android:textAllCaps="false"
@@ -317,20 +317,37 @@
                     app:layout_constraintTop_toBottomOf="@+id/profile_fee_range" />
 
                 <TextView
+                    android:id="@+id/textView123"
+                    android:layout_width="wrap_content"
+                    android:layout_height="27dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Contact:"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gradStop"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/profile_phone"
+                    app:layout_constraintHorizontal_bias="0.164"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+                <TextView
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="@string/phone"
+                    android:text="Phone No#"
                     android:textAllCaps="false"
                     android:textColor="@color/gradStop"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/profile_phone"
                     app:layout_constraintHorizontal_bias="0.169"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView123" />
 
 
                 <TextView
@@ -338,7 +355,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="8dp"
                     android:text="Fee-Range"
                     android:textAllCaps="false"
@@ -354,14 +371,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginEnd="8dp"
                     android:text="@string/email"
                     android:textAllCaps="false"
                     android:textColor="@color/gradStop"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.11"
+                    app:layout_constraintHorizontal_bias="0.097"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView12"
                     tools:ignore="MissingConstraints" />
@@ -371,7 +388,7 @@
                     android:id="@+id/profile_Working_Time"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
                     android:text="Fee-Rnage"
                     android:textAllCaps="false"
@@ -382,91 +399,91 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profile_Email" />
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Special Availability"
-                    android:textAllCaps="false"
-                    android:textColor="@color/gradStop"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.152"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                <!--<TextView-->
+                <!--android:id="@+id/textView11"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginEnd="8dp"-->
+                <!--android:text="Special Availability"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/gradStop"-->
+                <!--android:textSize="16sp"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintHorizontal_bias="0.152"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView8" />-->
 
-                <TextView
-                    android:id="@+id/profile_Special_Available"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Fee-Range"
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.918"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_Working_Time" />
+                <!--<TextView-->
+                    <!--android:id="@+id/profile_Special_Available"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginStart="8dp"-->
+                    <!--android:layout_marginTop="12dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:text="Fee-Range"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="14sp"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.918"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/profile_Working_Time" />-->
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Complete Address:  "
+                    android:text="Address Area &amp; City:  "
                     android:textAllCaps="false"
                     android:textColor="@color/gradStop"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.136"
+                    app:layout_constraintHorizontal_bias="0.147"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
-                <TextView
-                    android:id="@+id/profile_Voluntary_Hours"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Fee-Range"
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.918"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_Special_Available"
-                    app:layout_constraintVertical_bias="0.133" />
+                <!--<TextView-->
+                    <!--android:id="@+id/profile_Voluntary_Hours"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginStart="8dp"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:text="Fee-Range"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="14sp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.918"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/profile_Special_Available"-->
+                    <!--app:layout_constraintVertical_bias="0.133" />-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:text="Voluntary Hours: "
-                    android:textAllCaps="false"
-                    android:textColor="@color/gradStop"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.146"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11"
-                    app:layout_constraintVertical_bias="0.071" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="8dp"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:layout_marginBottom="8dp"-->
+                    <!--android:text="Voluntary Hours: "-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/gradStop"-->
+                    <!--android:textSize="16sp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.146"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/textView11"-->
+                    <!--app:layout_constraintVertical_bias="0.071" />-->
 
 
             </android.support.constraint.ConstraintLayout>
@@ -527,7 +544,7 @@
                     android:layout_height="11dp"
                     android:layout_marginTop="44dp"
                     android:layout_marginEnd="175dp"
-                    android:text="Hospital Website: "
+                    android:text="Institution (If Any): "
                     android:textAllCaps="false"
                     android:textColor="@color/toolbar_color"
                     android:textSize="10sp"
@@ -586,39 +603,39 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/profile_Designation"
-                    android:layout_width="124dp"
-                    android:layout_height="11dp"
-                    android:layout_marginTop="210dp"
-                    android:layout_marginEnd="40dp"
-                    android:text="Hospital Affiliations: "
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_residency"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.992"
-                    app:layout_constraintStart_toEndOf="@+id/profile_hospital_affiliation"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                <!--<TextView-->
+                    <!--android:id="@+id/profile_Designation"-->
+                    <!--android:layout_width="124dp"-->
+                    <!--android:layout_height="11dp"-->
+                    <!--android:layout_marginTop="210dp"-->
+                    <!--android:layout_marginEnd="40dp"-->
+                    <!--android:text="Hospital Affiliations: "-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="10sp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/profile_residency"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.992"-->
+                    <!--app:layout_constraintStart_toEndOf="@+id/profile_hospital_affiliation"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"-->
+                    <!--app:layout_constraintVertical_bias="0.0" />-->
 
-                <TextView
-                    android:id="@+id/profile_experience_year"
-                    android:layout_width="124dp"
-                    android:layout_height="11dp"
-                    android:layout_marginTop="238dp"
-                    android:layout_marginEnd="40dp"
-                    android:text="Hospital Affiliations: "
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_Designation"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.992"
-                    app:layout_constraintStart_toEndOf="@+id/profile_hospital_affiliation"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                <!--<TextView-->
+                    <!--android:id="@+id/profile_experience_year"-->
+                    <!--android:layout_width="124dp"-->
+                    <!--android:layout_height="11dp"-->
+                    <!--android:layout_marginTop="238dp"-->
+                    <!--android:layout_marginEnd="40dp"-->
+                    <!--android:text="Hospital Affiliations: "-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="10sp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="@+id/profile_Designation"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.992"-->
+                    <!--app:layout_constraintStart_toEndOf="@+id/profile_hospital_affiliation"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"-->
+                    <!--app:layout_constraintVertical_bias="0.0" />-->
 
 
                 <TextView
@@ -644,7 +661,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="4dp"
-                    android:text="Hospital Wards: "
+                    android:text="Experience / Training: "
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="@color/toolbar_color"
@@ -672,40 +689,40 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="124dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Designation:"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.025"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                <!--<TextView-->
+                    <!--android:id="@+id/textView17"-->
+                    <!--android:layout_width="124dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:layout_marginTop="14dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:text="Designation:"-->
+                    <!--android:textAlignment="textStart"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="10sp"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.025"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
 
 
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="124dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Experience / Tranining:"
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="@color/toolbar_color"
-                    android:textSize="10sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.025"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                <!--<TextView-->
+                    <!--android:id="@+id/textView18"-->
+                    <!--android:layout_width="124dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:layout_marginTop="14dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:text="Experience / Tranining:"-->
+                    <!--android:textAlignment="textStart"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="@color/toolbar_color"-->
+                    <!--android:textSize="10sp"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintHorizontal_bias="0.025"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/textView17" />-->
 
             </android.support.constraint.ConstraintLayout>
 

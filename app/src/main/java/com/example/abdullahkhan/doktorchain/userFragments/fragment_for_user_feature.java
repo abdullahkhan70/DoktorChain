@@ -23,7 +23,6 @@ public class fragment_for_user_feature extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        TextView tx = view.findViewById(R.id.feature_user);
 
     }
 }
