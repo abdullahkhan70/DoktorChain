@@ -19,10 +19,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.mainContext.Utils;
 import com.example.abdullahkhan.doktorchain.modelClass.ReadDoctor;
 import com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces.RetrofitClient;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_doctor_for_user_getter_setter;
 import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_doctors_from_user_profile_recycler_view;
+import com.toptoche.searchablespinnerlibrary.SearchableListDialog;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.util.ArrayList;
@@ -125,7 +127,7 @@ public class fragement_for_user_doctors extends Fragment  {
 
             @Override
             public void afterTextChanged(Editable s) {
-                filtered(s.toString());
+                filteredName(s.toString());
             }
 
 
@@ -157,6 +159,13 @@ public class fragement_for_user_doctors extends Fragment  {
         searchabelRangeFee.setPositiveButton("OK");
         searchabelRangeFee.setAdapter(rangeFeeAdapter);
 
+        searchabelRangeFee.setOnSearchTextChangedListener(new SearchableListDialog.OnSearchTextChanged() {
+            @Override
+            public void onSearchTextChanged(String strText) {
+                filteredFee(strText.toString());
+            }
+        });
+
         mAdapter = new search_doctors_from_user_profile_recycler_view(readDoctors,c);
 
         recyclerView = view.findViewById(R.id.doctor_recycler_view);
@@ -173,7 +182,7 @@ public class fragement_for_user_doctors extends Fragment  {
 
     }
 
-    private void setRetrofir(fragement_for_user_doctors fragement_for_user_doctors) {
+    private void setRetrofir(final fragement_for_user_doctors fragement_for_user_doctors) {
 
         RetrofitClient.getInstance().getDataFromDatabase().readDoctors().enqueue(new Callback<List<ReadDoctor>>() {
             @Override
@@ -184,7 +193,6 @@ public class fragement_for_user_doctors extends Fragment  {
                     Log.i("The Doctor Check: ",response.message());
 
                     readDoctors.addAll(readDoctor);
-
                     mAdapter.notifyDataSetChanged();
 
 
@@ -199,11 +207,23 @@ public class fragement_for_user_doctors extends Fragment  {
         });
     }
 
-    private void filtered(String toString) {
+    private void filteredName(String toString) {
         ArrayList<ReadDoctor> filteredList = new ArrayList<>();
 
         for(ReadDoctor itemsFiltered : readDoctors){
             if(itemsFiltered.getDoctorName().toLowerCase().contains(toString.toLowerCase())){
+                filteredList.add(itemsFiltered);
+            }
+        }
+        mAdapter.filteredListing(filteredList);
+
+    }
+
+    private void filteredFee(String toString) {
+        ArrayList<ReadDoctor> filteredList = new ArrayList<>();
+
+        for(ReadDoctor itemsFiltered : readDoctors){
+            if(itemsFiltered.getFee().toLowerCase().contains(toString.toLowerCase())){
                 filteredList.add(itemsFiltered);
             }
         }

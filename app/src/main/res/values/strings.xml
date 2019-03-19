@@ -32,4 +32,17 @@
     <string name="search_name">Search Name...</string>
     <string name="laboratory_name">Laboratory Name</string>
     <string name="city">City:</string>
+
+    <string name="preference_key_file">com.example.abdullahkhan.doktorchaine</string>
+    <string name="dr_mehren">Dr.Mehren</string>
+    <string name="specialization">Specialization</string>
+    <string name="fee_range">Fee-Range</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email:</string>
+    <string name="address">Address</string>
+    <string name="Address">Address:</string>
+    <string name="City">City</string>
+    <string name="Specialization">Specialization:</string>
+    <string name="CCity">City:</string>
+    <string name="send_inquiry">Send Inquiry</string>
 </resources>

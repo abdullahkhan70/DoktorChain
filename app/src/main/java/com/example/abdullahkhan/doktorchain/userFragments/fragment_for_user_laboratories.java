@@ -2,6 +2,7 @@ package com.example.abdullahkhan.doktorchain.userFragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.modelClass.LabModelJson;
+import com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces.RetrofitClient;
 import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_laboratory_from_user_profile_recycler_view;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_laboratory_getter_and_setter;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
@@ -25,11 +29,14 @@ import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class fragment_for_user_laboratories extends Fragment {
 
-    List<search_laboratory_getter_and_setter> list_of_doctor_profile = new ArrayList<>();
+    List<LabModelJson> list_of_lab_profile = new ArrayList<>();
     search_laboratory_from_user_profile_recycler_view mAdapter;
     RecyclerView recyclerView;
     Context c;
@@ -138,7 +145,7 @@ public class fragment_for_user_laboratories extends Fragment {
 
 
 
-        mAdapter = new search_laboratory_from_user_profile_recycler_view(list_of_doctor_profile,c);
+        mAdapter = new search_laboratory_from_user_profile_recycler_view(list_of_lab_profile,c);
 
         recyclerView = view.findViewById(R.id.laboratory_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c,LinearLayoutManager.HORIZONTAL,false);
@@ -149,16 +156,36 @@ public class fragment_for_user_laboratories extends Fragment {
 
 
 
-        prepare_doctors_profile_list();
-
+        setRetrofit(this);
 
     }
 
-    private void filtered(String toString) {
-        ArrayList<search_laboratory_getter_and_setter> filteredList = new ArrayList<>();
+    private void setRetrofit(fragment_for_user_laboratories fragment_for_user_laboratories) {
 
-        for(search_laboratory_getter_and_setter itemsFiltered : list_of_doctor_profile){
-            if(itemsFiltered.getDoctor_profile_name().toLowerCase().contains(toString.toLowerCase())){
+        RetrofitClient.getInstance().getDataFromDatabase().readLabs().enqueue(new Callback<List<LabModelJson>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<LabModelJson>> call,@NonNull Response<List<LabModelJson>> response) {
+                List<LabModelJson> labModelJson = response.body();
+                if(response.isSuccessful()){
+                    Log.i("Labs: ", response.message());
+
+                    list_of_lab_profile.addAll(labModelJson);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<LabModelJson>> call,@NonNull Throwable t) {
+
+            }
+        });
+    }
+
+    private void filtered(String toString) {
+        ArrayList<LabModelJson> filteredList = new ArrayList<>();
+
+        for(LabModelJson itemsFiltered : list_of_lab_profile){
+            if(itemsFiltered.getLabName().toLowerCase().contains(toString.toLowerCase())){
                 filteredList.add(itemsFiltered);
             }
         }
@@ -166,15 +193,7 @@ public class fragment_for_user_laboratories extends Fragment {
 
     }
 
-    private void prepare_doctors_profile_list() {
-
-
-
-        list_of_doctor_profile.add(new search_laboratory_getter_and_setter(R.drawable.hospital_shiffa,"Kulsom Intl","123213.com",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-        list_of_doctor_profile.add(new search_laboratory_getter_and_setter(R.drawable.hospital_shiffa,"Hospital Of Life","hello World",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-    }
+   
 
 }
 

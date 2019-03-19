@@ -27,6 +27,7 @@ public class loginScreen extends AppCompatActivity {
 
     EditText loginEmail,loginpassword;
     Retrofit login_retrofit;
+    Utils utils;
 
 
     @Override
@@ -37,7 +38,7 @@ public class loginScreen extends AppCompatActivity {
         loginpassword = findViewById(R.id.login_password);
 
         // TODO Rrmaining https://www.youtube.com/watch?v=j0wH0m_xYLs
-
+        utils = new Utils(getApplicationContext());
 
     }
 
@@ -134,7 +135,11 @@ public class loginScreen extends AppCompatActivity {
                             Utils.saveSharedPerference(loginScreen.this, "doctorRegIdFk", loginReponse.data.getDoctorRegIdFk());
 
                             if (loginReponse.data.getRole().equals("User")) {
-                                startActivity(new Intent(loginScreen.this, user_profile_navigation_bar.class));
+                                utils.writeLoginPerference(true);
+                                if(utils.readLoginPreference()){
+                                    startActivity(new Intent(loginScreen.this, user_profile_navigation_bar.class));
+                                }
+
                             }
                             else{
                                 Toast.makeText(loginScreen.this,"The Login is not successful!",Toast.LENGTH_LONG).show();

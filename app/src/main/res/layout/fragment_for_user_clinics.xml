@@ -123,9 +123,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
                 <EditText
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:paddingLeft="13dp"
                     android:id="@+id/search_clinics_name"
                     android:layout_width="match_parent"
                     android:layout_height="38dp"
@@ -135,13 +132,15 @@
                     android:background="@android:color/white"
                     android:drawableRight="@drawable/search_icon"
                     android:hint="Search Name..."
+                    android:maxLines="1"
+                    android:paddingLeft="13dp"
+                    android:singleLine="true"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/user_clinics_range_fee"
-                    tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded,RtlSymmetry,TextFields"
-                     />
+                    tools:ignore="Autofill,HardcodedText,MissingConstraints,RtlHardcoded,RtlSymmetry,TextFields" />
 
 
             </android.support.constraint.ConstraintLayout>

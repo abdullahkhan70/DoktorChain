@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.modelClass.ReadHospitals;
+import com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces.RetrofitClient;
 import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_hopital_from_user_profile_recycler_view;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_hospital_getter_and_setter;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
@@ -26,10 +29,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class fragement_for_user_hospital extends Fragment {
 
-    List<search_hospital_getter_and_setter> list_of_doctor_profile = new ArrayList<>();
+    List<ReadHospitals> readHospitalsList = new ArrayList<>();
     search_hopital_from_user_profile_recycler_view mAdapter;
     RecyclerView recyclerView;
     Context c;
@@ -147,7 +153,7 @@ public class fragement_for_user_hospital extends Fragment {
 
 
 
-        mAdapter = new search_hopital_from_user_profile_recycler_view(list_of_doctor_profile,c);
+        mAdapter = new search_hopital_from_user_profile_recycler_view(readHospitalsList,c);
         recyclerView = view.findViewById(R.id.hospital_recycler_view);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(c,LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -157,16 +163,42 @@ public class fragement_for_user_hospital extends Fragment {
 
 
 
-        prepare_doctors_profile_list();
+       // prepare_doctors_profile_list();
+
+        setRetrofit(this);
 
 
     }
 
-    private void filtered(String toString) {
-        ArrayList<search_hospital_getter_and_setter> filteredList = new ArrayList<>();
+    private void setRetrofit(fragement_for_user_hospital fragement_for_user_hospital) {
 
-        for(search_hospital_getter_and_setter itemsFiltered : list_of_doctor_profile){
-            if(itemsFiltered.getDoctor_profile_name().toLowerCase().contains(toString.toLowerCase())){
+        RetrofitClient.getInstance().getDataFromDatabase().readHospitals().enqueue(new Callback<List<ReadHospitals>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ReadHospitals>> call,@NonNull Response<List<ReadHospitals>> response) {
+                if(response.isSuccessful()){
+                    List<ReadHospitals> readHospitals = response.body();
+
+                    readHospitalsList.addAll(readHospitals);
+
+                    mAdapter.notifyDataSetChanged();
+
+                    Log.i("The Hospital ",response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ReadHospitals>> call,@NonNull Throwable t) {
+
+            }
+        });
+
+    }
+
+    private void filtered(String toString) {
+        ArrayList<ReadHospitals> filteredList = new ArrayList<>();
+
+        for(ReadHospitals itemsFiltered : readHospitalsList){
+            if(itemsFiltered.getHospitalName().toLowerCase().contains(toString.toLowerCase())){
                 filteredList.add(itemsFiltered);
             }
         }
@@ -174,14 +206,6 @@ public class fragement_for_user_hospital extends Fragment {
 
     }
 
-    private void prepare_doctors_profile_list() {
 
-
-
-        list_of_doctor_profile.add(new search_hospital_getter_and_setter(R.drawable.hospital_shiffa,"Kulsom Intl","123213.com",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-        list_of_doctor_profile.add(new search_hospital_getter_and_setter(R.drawable.hospital_shiffa,"Hospital Of Life","hello World",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-    }
 
 }

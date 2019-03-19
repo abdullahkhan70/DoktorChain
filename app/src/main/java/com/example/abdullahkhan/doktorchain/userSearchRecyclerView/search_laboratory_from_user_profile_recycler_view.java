@@ -1,6 +1,8 @@
 package com.example.abdullahkhan.doktorchain.userSearchRecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.modelClass.LabModelJson;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_laboratory_getter_and_setter;
 
 import java.util.ArrayList;
@@ -23,14 +26,16 @@ public class search_laboratory_from_user_profile_recycler_view extends RecyclerV
 
     private LayoutInflater layoutInflater;
     private Context c;
-    private List<search_laboratory_getter_and_setter> list_of_doctor_profiles;
-    private List<search_laboratory_getter_and_setter> searchItems;
+    private List<LabModelJson> list_of_lab_profiles;
+    private List<LabModelJson> searchItems;
+
+    String image_URL ="http://doctortest.quellxcode.com/doctor-api/images/";
 
 
-    public search_laboratory_from_user_profile_recycler_view(List<search_laboratory_getter_and_setter> list_of_doctor_profiles,Context c){
-        this.list_of_doctor_profiles = list_of_doctor_profiles;
+    public search_laboratory_from_user_profile_recycler_view(List<LabModelJson> list_of_lab_profiles,Context c){
+        this.list_of_lab_profiles = list_of_lab_profiles;
         this.c = c;
-        searchItems = new ArrayList<>(list_of_doctor_profiles);
+        searchItems = new ArrayList<>(list_of_lab_profiles);
     }
 
 
@@ -48,33 +53,58 @@ public class search_laboratory_from_user_profile_recycler_view extends RecyclerV
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
-        search_laboratory_getter_and_setter doctor_profiles = list_of_doctor_profiles.get(position);
+        LabModelJson lab_profiles = list_of_lab_profiles.get(position);
         //holder.user_profile_doctor.setImageResource(doctor_profiles.getDoctor_profile_image());
-        Glide.with(c).load(doctor_profiles.getDoctor_profile_image()).into(holder.user_profile_doctor);
-        holder.doctor_name.setText(doctor_profiles.getDoctor_profile_name());
-        holder.doctor_occupation.setText(doctor_profiles.getDoctor_profile_destination());
-        holder.facebook_user_doctor_social_media.setImageResource(doctor_profiles.getFacebook_profile());
-        holder.twitter_user_doctor_social_media.setImageResource(doctor_profiles.getTwitter_profile());
-        holder.linkedin_user_doctor_social_media.setImageResource(doctor_profiles.getLinkedin_profile());
-        holder.user_profile_view_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        Glide.with(c).load(image_URL + lab_profiles.getLabImgName()).into(holder.user_profile_doctor);
+        holder.doctor_name.setText(lab_profiles.getLabName());
+        holder.doctor_occupation.setText(lab_profiles.getLabAddress());
+        try {
+        String facebook_url = (String) lab_profiles.getFacebook();
+        String twitter_url = (String) lab_profiles.getTwitter();
+        String linkedin_url = (String) lab_profiles.getLinkedin();
 
-            }
-        });
+        final Uri facebook_URL = Uri.parse("http://" + facebook_url);
+        final Uri twitter_URL = Uri.parse("http://" + twitter_url);
+        final Uri linkedin_URL = Uri.parse("http://" + linkedin_url);
+
+    holder.facebook_user_doctor_social_media.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, facebook_URL));
+        }
+    });
+
+    holder.twitter_user_doctor_social_media.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, twitter_URL));
+        }
+    });
+
+    holder.linkedin_user_doctor_social_media.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, linkedin_URL));
+        }
+    });
+
+}
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
     }
 
 
     @Override
     public int getItemCount() {
-        return list_of_doctor_profiles.size();
+        return list_of_lab_profiles.size();
     }
 
 
 
-    public void filteredListing(ArrayList<search_laboratory_getter_and_setter> filteredList) {
+    public void filteredListing(ArrayList<LabModelJson> filteredList) {
 
-        list_of_doctor_profiles = filteredList;
+        list_of_lab_profiles = filteredList;
         notifyDataSetChanged();
     }
 

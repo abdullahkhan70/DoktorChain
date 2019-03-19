@@ -64,59 +64,70 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="Backend Developer"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hospital_name" />
 
-            <ImageView
-                android:id="@+id/facebook_user_hospital_social_media"
+            <TextView
+                android:id="@+id/hospital_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="facebook_social_media_doctor_profile"
+                android:text="Backend Developer"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hospital_specialist" />
+
+            <ImageButton
+                android:id="@+id/facebook_user_hospital_social_media"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/facebook_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.263"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/hospital_specialist" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/twitter_user_hospital_social_media"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="36dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="twitter_social_media_doctor_profile"
                 android:src="@drawable/twitter_icon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintHorizontal_bias="0.041"
                 app:layout_constraintStart_toEndOf="@+id/facebook_user_hospital_social_media"
                 app:layout_constraintTop_toBottomOf="@+id/hospital_specialist" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/linkedin_user_hospital_social_media"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="36dp"
                 android:layout_marginEnd="8dp"
-                android:onClick="linkedin_social_media_doctor_profile"
                 android:src="@drawable/linkedin_icon"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.077"
+                app:layout_constraintHorizontal_bias="0.094"
                 app:layout_constraintStart_toEndOf="@+id/twitter_user_hospital_social_media"
                 app:layout_constraintTop_toBottomOf="@+id/hospital_specialist" />
+
 
             <Button
                 android:id="@+id/hospital_profile_view_profile"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/border_full_user_doctor_btn"
                 android:onClick="user_profile_view_profile"
@@ -125,7 +136,6 @@
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/twitter_user_hospital_social_media" />
 

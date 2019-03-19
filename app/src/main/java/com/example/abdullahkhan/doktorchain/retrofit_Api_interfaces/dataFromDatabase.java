@@ -1,8 +1,12 @@
 package com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces;
 
 
+import com.example.abdullahkhan.doktorchain.modelClass.ClinicsModelJson;
+import com.example.abdullahkhan.doktorchain.modelClass.LabModelJson;
 import com.example.abdullahkhan.doktorchain.modelClass.LoginReponse;
+import com.example.abdullahkhan.doktorchain.modelClass.NursesModelJson;
 import com.example.abdullahkhan.doktorchain.modelClass.ReadDoctor;
+import com.example.abdullahkhan.doktorchain.modelClass.ReadHospitals;
 import com.example.abdullahkhan.doktorchain.modelClass.loginRequest;
 
 import java.util.List;
@@ -44,6 +48,18 @@ public interface dataFromDatabase {
 
     @GET("doctor_api/doctorView")
     Call<List<ReadDoctor>> readDoctors();
+
+    @GET("Hospital_api/hospitalView")
+    Call<List<ReadHospitals>> readHospitals();
+
+    @GET("Lab_api/labView")
+    Call<List<LabModelJson>> readLabs();
+
+    @GET("nurse_api/nurseView")
+    Call<List<NursesModelJson>> readNurses();
+
+    @GET("Clinic_api/clinicView")
+    Call<List<ClinicsModelJson>> readClinics();
 
 
 }

@@ -1,7 +1,9 @@
 package com.example.abdullahkhan.doktorchain.userFragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -18,6 +20,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.abdullahkhan.doktorchain.R;
+import com.example.abdullahkhan.doktorchain.modelClass.ClinicsModelJson;
+import com.example.abdullahkhan.doktorchain.retrofit_Api_interfaces.RetrofitClient;
 import com.example.abdullahkhan.doktorchain.userSearchGetterAndSetterRecyclerView.search_clinic_for_user_getter_setter;
 import com.example.abdullahkhan.doktorchain.userSearchRecyclerView.search_clinic_from_user_profile_recycler_view;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
@@ -25,9 +29,13 @@ import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class fragment_for_user_clinic extends Fragment  {
-    List<search_clinic_for_user_getter_setter> list_of_doctor_profile = new ArrayList<>();
+    List<ClinicsModelJson> list_of_doctor_profile = new ArrayList<>();
     search_clinic_from_user_profile_recycler_view mAdapter;
     RecyclerView recyclerView;
     Context c;
@@ -78,7 +86,7 @@ public class fragment_for_user_clinic extends Fragment  {
         // Defines the xml file for the fragment
         c = parent.getContext();
         //hyper_doctors = new ArrayList<>();
-        return inflater.inflate(R.layout.frament_for_user_doctors, parent,false);
+        return inflater.inflate(R.layout.fragment_for_user_clinics, parent,false);
 
     }
 
@@ -122,7 +130,7 @@ public class fragment_for_user_clinic extends Fragment  {
 
         ArrayAdapter<String> citiesAdapter = new ArrayAdapter<>(c,android.R.layout.simple_list_item_1,cities);
         SearchableSpinner searchableCities = view.findViewById(R.id.user_clinics_cities);
-        searchableCities.setTitle("Select Cities");
+        searchableCities.setTitle("Select City");
         searchableCities.setPositiveButton("OK");
         searchableCities.setAdapter(citiesAdapter);
 
@@ -157,16 +165,34 @@ public class fragment_for_user_clinic extends Fragment  {
 
 
 
-        prepare_doctors_profile_list();
+        setRetrofit(c);
 
 
     }
 
-    private void filtered(String toString) {
-        ArrayList<search_clinic_for_user_getter_setter> filteredList = new ArrayList<>();
+    private void setRetrofit(Context c) {
+        RetrofitClient.getInstance().getDataFromDatabase().readClinics().enqueue(new Callback<List<ClinicsModelJson>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ClinicsModelJson>> call,@NonNull Response<List<ClinicsModelJson>> response) {
+                if(response.isSuccessful()){
+                    List<ClinicsModelJson> clinicsModelJsonList = response.body();
+                    list_of_doctor_profile.addAll(clinicsModelJsonList);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
 
-        for(search_clinic_for_user_getter_setter itemsFiltered : list_of_doctor_profile){
-            if(itemsFiltered.getDoctor_profile_name().toLowerCase().contains(toString.toLowerCase())){
+            @Override
+            public void onFailure(@NonNull Call<List<ClinicsModelJson>> call,@NonNull Throwable t) {
+
+            }
+        });
+    }
+
+    private void filtered(String toString) {
+        ArrayList<ClinicsModelJson> filteredList = new ArrayList<>();
+
+        for(ClinicsModelJson itemsFiltered : list_of_doctor_profile){
+            if(itemsFiltered.getClinicNames().toLowerCase().contains(toString.toLowerCase())){
                 filteredList.add(itemsFiltered);
             }
         }
@@ -174,15 +200,15 @@ public class fragment_for_user_clinic extends Fragment  {
 
     }
 
-    private void prepare_doctors_profile_list() {
-
-
-
-        list_of_doctor_profile.add(new search_clinic_for_user_getter_setter(R.drawable.medical_clinic,"Medical Clinic","MBBS",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-        list_of_doctor_profile.add(new search_clinic_for_user_getter_setter(R.drawable.medical_clinic,"I Love Clinic","MBBS",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
-
-    }
+//    private void prepare_doctors_profile_list() {
+//
+//
+//
+//        list_of_doctor_profile.add(new search_clinic_for_user_getter_setter(R.drawable.medical_clinic,"Medical Clinic","MBBS",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
+//
+//        list_of_doctor_profile.add(new search_clinic_for_user_getter_setter(R.drawable.medical_clinic,"I Love Clinic","MBBS",R.drawable.facebook_icon,R.drawable.twitter_icon,R.drawable.linkedin_icon));
+//
+//    }
 
 
 
