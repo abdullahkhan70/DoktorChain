@@ -13,5 +13,6 @@
     <color name="endingColorOfGradient_02">#DEB732</color>
     <color name="btnCover">#39C5AC</color>
     <color name="toolbar_color">#0bc9e3</color>
+    <color name="round_feature_btn">#dc3545</color>
 
 </resources>

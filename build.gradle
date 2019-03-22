@@ -20,6 +20,9 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        maven { url "http://dl.bintray.com/riteshakya037/maven" }
+        maven { url 'https://plugins.gradle.org/m2/'}
     }
 }
 

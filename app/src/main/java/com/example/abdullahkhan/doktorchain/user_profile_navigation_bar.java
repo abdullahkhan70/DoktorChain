@@ -172,7 +172,7 @@ public class user_profile_navigation_bar extends AppCompatActivity
             Activity activity;
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_switch,fragment).commit();
+            fragmentTransaction.replace(R.id.fragment_switch,fragment,"themainfragment").commit();
 
         }
 

@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     implementation 'jp.wasabeef:glide-transformations:4.0.0'
+    implementation "com.android.support:support-core-utils:27.1.1"
     // If you want to use the GPU Filters
     implementation 'jp.co.cyberagent.android:gpuimage:2.0.0'
     implementation 'com.shuhart.bubblepagerindicator:bubblepagerindicator:1.1.2'
